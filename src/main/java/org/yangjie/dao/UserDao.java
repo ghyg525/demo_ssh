@@ -14,8 +14,8 @@ public class UserDao extends BaseDao{
 	 * @return 无记录返回null
 	 */
 	public User getByUsername(String username){
-		return (User) getSession().createQuery("from User where username=:username")
-				.setString("username", username).uniqueResult();	// HQL语句方式
+		return getSession().createQuery("from User where username=:username", User.class)
+				.setParameter("username", username).uniqueResult();	// HQL语句方式
 	}
 	
 	/**
@@ -25,8 +25,8 @@ public class UserDao extends BaseDao{
 	 * @return 无记录返回null
 	 */
 	public User getByUsernameAndPassword(String username, String password){
-		return (User)getSession().createSQLQuery("select * from user where username=? and password=?")
-				.addEntity(User.class).setString(0, username).setString(1, password).uniqueResult();	// SQL语句方式
+		return getSession().createNativeQuery("select * from user where username=:username and password=:password", User.class)
+				.setParameter("username", username).setParameter("password", password).uniqueResult();  // 原生sql方式
 	}
 	
 	/**

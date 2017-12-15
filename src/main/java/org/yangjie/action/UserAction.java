@@ -9,7 +9,6 @@ import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 import org.yangjie.service.UserService;
 
-@Action("user") // 使用struts创建action
 @Results({ // 注解为action的返回页面
 	@Result(name="index",location="/index.jsp"),
 	@Result(name="input",location="/login.jsp"),
@@ -32,6 +31,7 @@ public class UserAction extends BaseAction{
 	 * 用户登录
 	 * @return
 	 */
+	@Action("login")
 	public String login(){
 		if(userService.checkUser(username, password)){
 			super.getSession().put("username", username);

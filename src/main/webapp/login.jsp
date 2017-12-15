@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<form action="user!login.action" method="post">
+<form action="login.action" method="post">
 	username:<input type="text" name="username"/><br>
 	password:<input type="text" name="password"/>
 				<input type="submit" value="login">
